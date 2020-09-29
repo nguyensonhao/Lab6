@@ -86,7 +86,7 @@ public final class user_002dpage_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("            <h1 style=\"text-align: center\">User Page</h1>\n");
       out.write("            Welcome <strong>");
       out.print(Name_User);
-      out.write("</strong>! <a href=\"logout.jsp\" class=\"btn btn-info\" role=\"button\"> Logout </a><br/>                                \n");
+      out.write("</strong>! <a href=\"Login.jsp\" class=\"btn btn-info\" role=\"button\"> Logout </a><br/>                                \n");
       out.write("\n");
       out.write("            <div class=\"card\"><h2><strong>Show all user</strong></h2>\n");
       out.write("                <form class=\"navbar-form\" role=\"search\"></form>\n");

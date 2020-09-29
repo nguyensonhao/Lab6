@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author DINH
+ * @author Hao Nguyen
  */
 @WebServlet(name = "logout", urlPatterns = {"/logout"})
 public class logout extends HttpServlet {

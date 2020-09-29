@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author DINH
+ * @author Hao Nguyen
  */
 @WebServlet(name = "addNEW", urlPatterns = {"/addNEW"})
 public class addNEW extends HttpServlet {

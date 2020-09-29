@@ -37,7 +37,7 @@ table, th, td {
     <body>
         <div class="page-header">
             <h1 style="text-align: center">User Page</h1>
-            Welcome <strong><%=Name_User%></strong>! <a href="logout.jsp" class="btn btn-info" role="button"> Logout </a><br/>                                
+            Welcome <strong><%=Name_User%></strong>! <a href="Login.jsp" class="btn btn-info" role="button"> Logout </a><br/>                                
 
             <div class="card"><h2><strong>Show all user</strong></h2>
                 <form class="navbar-form" role="search"></form>
