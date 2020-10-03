@@ -3,19 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/BaiLabWEB/LAB6/src/java/Controller/logout.java</file>
-            <file>file:/D:/BaiLabWEB/LAB6/web/user-page.jsp</file>
-            <file>file:/D:/BaiLabWEB/LAB6/nbproject/build-impl.xml</file>
-            <file>file:/D:/BaiLabWEB/LAB6/web/index.jsp</file>
-            <file>file:/D:/BaiLabWEB/LAB6/web/update_user.jsp</file>
-            <file>file:/D:/BaiLabWEB/LAB6/src/java/Model/UserModel.java</file>
-            <file>file:/D:/BaiLabWEB/LAB6/src/java/Controller/login.java</file>
-            <file>file:/D:/BaiLabWEB/LAB6/src/java/MyUtils/DBConnection.java</file>
             <file>file:/D:/BaiLabWEB/LAB6/web/dashboard.jsp</file>
-            <file>file:/D:/BaiLabWEB/LAB6/web/CreateAccount.jsp</file>
-            <file>file:/D:/BaiLabWEB/LAB6/web/Login.jsp</file>
-            <file>file:/D:/BaiLabWEB/LAB6/src/java/MyUtils/PasswordUtilities.java</file>
-            <file>file:/D:/BaiLabWEB/LAB6/src/java/Controller/addNEW.java</file>
         </group>
     </open-files>
 </project-private>

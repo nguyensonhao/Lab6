@@ -58,6 +58,7 @@
 
 %>
 <!DOCTYPE html>
+
 <style>
     table, th, td {
         border: 1px solid black;
@@ -66,108 +67,135 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <title>Admin Page</title>
-
+        <script>
+            $(document).ready(function () {
+                $('#checkBoxAll').click(function () {
+                    if ($(this).prop("checked") == true) {
+                        $("input:checkbox").attr('checked', true);
+                        $("#uncheck").attr('checked', false);
+                    } else if ($(this).prop("checked") == false) {
+                        $("input:checkbox").attr('checked', false);
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
-        <h1 style="text-align: center">Admin Page</h1>
-        Welcome <strong><%=Name_User%></strong>!   <a href ="logout">Logout</a><br/>
-    </div><br>
-    <button type="button" onclick="location.href = 'CreateAccount.jsp'">Add new Account</button>
-    <div class="card">
-        <h2><strong>Show all user</strong></h2> 
-        <!--create new account-->
-
-        <!--add new user-->
-        <form role="search" action="dashboard.jsp?s=<%=s%>">
-            <div>
-                <input type="text"  placeholder="Search" name="s" value="<%=s%>">
-                <button>Search</button>
+        <div class="container">
+            <div class="jumbotron">
+                <h1 style="text-align: center">Admin Page</h1>
             </div>
-        </form>
-
-        <div>
-            <ul>
-                <a href="index.jsp?tab=">All(<%=countSub + countAdmin%>)</a>
-                <a href="index.jsp?tab=1">Administrator(<%=countAdmin%>)</a>
-                <a href="index.jsp?tab=2">Subscriber(<%=countSub%>)</a>
-            </ul>
-        </div>
-        <%
-            if (session.getAttribute("check") != null) {
-                if (session.getAttribute("check").equals("trueAcc")) {
-        %>
-
-        <h3 style="color: red"> You can not change your account</h3>
-        <%
-        } if(session.getAttribute("check").equals("trueNull")) {
-        %>
-         <h3 style="color: red"> Please check account you want to change !!!!</h3>
-        <%
-                }
-            }
-        %>
-        <form action="update_user.jsp" id="check">
-            <div>
-                <!--Change role-->
-                <div >
-                    <select  name="role">
-                        <option value="1">Change Role to Administrator</option>
-                        <option value="2">Change Role to Subscriber</option>
-                    </select>
-                    <button type="submit">Change</button>
-                </div><br>
-
-
-                <!--Change role end-->
+            <div class="alert alert-success">
+                Welcome <strong><%=Name_User%></strong>!   <a href ="logout"><span class="label label-danger">Logout</span></a><br/>
+                <button type="button" class="btn btn-primary" onclick="location.href = 'CreateAccount.jsp'">Add new Account</button>
             </div>
-            <script>
-                function toggle(source) {
-                    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                    for (var i = 0; i < checkboxes.length; i++) {
-                        if (checkboxes[i] !== source)
-                            checkboxes[i].checked = source.checked;
+            <div class="well well-lg">
+                <h2><strong>Show all user</strong></h2> 
+                <!--create new account-->
+
+                <!--add new user-->
+                <form class="navbar-form" role="search" action="dashboard.jsp?s=<%=s%>">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="s" id="srch-term" value="<%=s%>">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>                </div>
+                    </div>
+                </form>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapsecollapse">
+                    <ul class="nav navbar-nav">
+                        <li><a class="alert alert-warning" href="index.jsp?tab=">All(<%=countSub + countAdmin%>)</a></li>
+                        <li><a class="alert alert-warning" href="index.jsp?tab=1">Administrator(<%=countAdmin%>)</a></li>
+                        <li><a class="alert alert-warning" href="index.jsp?tab=2">Subscriber(<%=countSub%>)</a></li>
+                    </ul>
+                </div>
+                <%
+                    if (session.getAttribute("check") != null) {
+                        if (session.getAttribute("check").equals("trueAcc")) {
+                %>
+
+                <h3 style="color: red"> You can not change your account</h3>
+                <%
                     }
-                }</script>
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th <input type="checkbox" onclick="toggle(this)"/>Username</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-                            int i = 0;
-                            //show all users
-                            for (User user : list) {
-                                String Name = user.getFName() + " " + user.getLName();
-                                String Role_Show = "";
-                                if (user.getRoleId() == 1) {
-                                    Role_Show = "Administrator";
-                                } else if (user.getRoleId() == 2) {
-                                    Role_Show = "Subscriber";
-                                }
-                        %>
-                        <tr>
-                            <td><input type="checkbox" name="User" value="<%=user.getUsername()%>"><%=user.getUsername()%></td>
-                            <td><%=Name%></td>
-                            <td><%=user.getEmail()%></td>
-                            <td><%=Role_Show%></td>
-                        </tr>
-                        <%
-                            }
-                        %>
-                    </tbody>
-                </table>
-            </div>
-        </form>
-    </div>
+                    if (session.getAttribute("check").equals("trueNull")) {
+                %>
+                <h3 style="color: red"> Please check account you want to change !!!!</h3>
+                <%
+                        }
+                    }
+                %>
+                <form action="update_user.jsp" id="check">
+                    <div>
+                        <!--Change role-->
+                        <div>
+                            <select  name="role">
+                                <option value="1">Change Role to Administrator</option>
+                                <option value="2">Change Role to Subscriber</option>
+                            </select>
+                             <input id="check" name="" type="submit" value="Submit"> 
+                           
+                        </div><br>
 
-</div>
-</div>                   
-</body>
+
+                        <!--Change role end-->
+                    </div>
+                    <script>
+                        function toggle(source) {
+                            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                            for (var i = 0; i < checkboxes.length; i++) {
+                                if (checkboxes[i] !== source)
+                                    checkboxes[i].checked = source.checked;
+                            }
+                        }</script>
+                  
+                   <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th <input type="checkbox" onclick="toggle(this)"/>Username</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                int NumCount = 0;
+                                //show all users
+                                for (User user : list) {
+                                    NumCount++;
+                                    String Name = user.getFName() + " " + user.getLName();
+                                    String Role_Show = "";
+                                    if (user.getRoleId() == 1) {
+                                        Role_Show = "Administrator";
+                                    } else if (user.getRoleId() == 2) {
+                                        Role_Show = "Subscriber";
+                                    }
+                            %>
+                            <tr>
+                                <td><%=NumCount%></td>
+                                <td><input type="checkbox" name="User" value="<%=user.getUsername()%>"><%=user.getUsername()%></td>
+                                <td><%=Name%></td>
+                                <td><%=user.getEmail()%></td>
+                                <td><%=Role_Show%></td>
+                            </tr>
+                            <%
+                                }
+                            %>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>            
+    </body>
 </html>

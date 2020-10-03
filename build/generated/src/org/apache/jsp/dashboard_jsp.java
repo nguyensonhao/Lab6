@@ -105,6 +105,7 @@ public final class dashboard_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
+      out.write("\n");
       out.write("<style>\n");
       out.write("    table, th, td {\n");
       out.write("        border: 1px solid black;\n");
@@ -113,143 +114,167 @@ public final class dashboard_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">\n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>\n");
+      out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js\"></script>\n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js\"></script>\n");
+      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css\">\n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>\n");
+      out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\"></script>\n");
       out.write("        <title>Admin Page</title>\n");
-      out.write("\n");
+      out.write("        <script>\n");
+      out.write("            $(document).ready(function () {\n");
+      out.write("                $('#checkBoxAll').click(function () {\n");
+      out.write("                    if ($(this).prop(\"checked\") == true) {\n");
+      out.write("                        $(\"input:checkbox\").attr('checked', true);\n");
+      out.write("                        $(\"#uncheck\").attr('checked', false);\n");
+      out.write("                    } else if ($(this).prop(\"checked\") == false) {\n");
+      out.write("                        $(\"input:checkbox\").attr('checked', false);\n");
+      out.write("                    }\n");
+      out.write("                });\n");
+      out.write("            });\n");
+      out.write("        </script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1 style=\"text-align: center\">Admin Page</h1>\n");
-      out.write("        Welcome <strong>");
+      out.write("        <div class=\"container\">\n");
+      out.write("            <h1 style=\"text-align: center\">Admin Page</h1>\n");
+      out.write("            Welcome <strong>");
       out.print(Name_User);
       out.write("</strong>!   <a href =\"logout\">Logout</a><br/>\n");
-      out.write("    </div><br>\n");
-      out.write("    <button type=\"button\" onclick=\"location.href = 'CreateAccount.jsp'\">Add new Account</button>\n");
-      out.write("    <div class=\"card\">\n");
-      out.write("        <h2><strong>Show all user</strong></h2> \n");
-      out.write("        <!--create new account-->\n");
+      out.write("            <br>\n");
+      out.write("            <button type=\"button\" onclick=\"location.href = 'CreateAccount.jsp'\">Add new Account</button>\n");
+      out.write("            <div class=\"card\">\n");
+      out.write("                <h2><strong>Show all user</strong></h2> \n");
+      out.write("                <!--create new account-->\n");
       out.write("\n");
-      out.write("        <!--add new user-->\n");
-      out.write("        <form role=\"search\" action=\"dashboard.jsp?s=");
+      out.write("                <!--add new user-->\n");
+      out.write("                <form class=\"navbar-form\" role=\"search\" action=\"dashboard.jsp?s=");
       out.print(s);
       out.write("\">\n");
-      out.write("            <div>\n");
-      out.write("                <input type=\"text\"  placeholder=\"Search\" name=\"s\" value=\"");
+      out.write("                    <div class=\"input-group\">\n");
+      out.write("                        <input type=\"text\" class=\"form-control\" placeholder=\"Search\" name=\"s\" id=\"srch-term\" value=\"");
       out.print(s);
       out.write("\">\n");
-      out.write("                <button>Search</button>\n");
-      out.write("            </div>\n");
-      out.write("        </form>\n");
+      out.write("                        <div class=\"input-group-btn\">\n");
+      out.write("                            <button class=\"btn btn-default\" type=\"submit\"><i class=\"glyphicon glyphicon-search\"></i></button>                </div>\n");
+      out.write("                    </div>\n");
+      out.write("                </form>\n");
       out.write("\n");
-      out.write("        <div>\n");
-      out.write("            <ul>\n");
-      out.write("                <a href=\"index.jsp?tab=\">All(");
+      out.write("                <div class=\"collapse navbar-collapse navbar-collapse\">\n");
+      out.write("                    <ul class=\"nav navbar-nav\">\n");
+      out.write("                        <li><a class=\"alert alert-warning\" href=\"index.jsp?tab=\">All(");
       out.print(countSub + countAdmin);
-      out.write(")</a>\n");
-      out.write("                <a href=\"index.jsp?tab=1\">Administrator(");
+      out.write(")</a></li>\n");
+      out.write("                        <li><a class=\"alert alert-warning\" href=\"index.jsp?tab=1\">Administrator(");
       out.print(countAdmin);
-      out.write(")</a>\n");
-      out.write("                <a href=\"index.jsp?tab=2\">Subscriber(");
+      out.write(")</a></li>\n");
+      out.write("                        <li><a class=\"alert alert-warning\" href=\"index.jsp?tab=2\">Subscriber(");
       out.print(countSub);
-      out.write(")</a>\n");
-      out.write("            </ul>\n");
-      out.write("        </div>\n");
-      out.write("        ");
+      out.write(")</a></li>\n");
+      out.write("                    </ul>\n");
+      out.write("                </div>\n");
+      out.write("                ");
 
-            if (session.getAttribute("check") != null) {
-                if (session.getAttribute("check").equals("trueAcc")) {
-        
+                    if (session.getAttribute("check") != null) {
+                        if (session.getAttribute("check").equals("trueAcc")) {
+                
       out.write("\n");
       out.write("\n");
-      out.write("        <h3 style=\"color: red\"> You can not change your account</h3>\n");
-      out.write("        ");
+      out.write("                <h3 style=\"color: red\"> You can not change your account</h3>\n");
+      out.write("                ");
 
-        } if(session.getAttribute("check").equals("trueNull")) {
-        
+                    }
+                    if (session.getAttribute("check").equals("trueNull")) {
+                
       out.write("\n");
-      out.write("         <h3 style=\"color: red\"> Please check account you want to change !!!!</h3>\n");
-      out.write("        ");
+      out.write("                <h3 style=\"color: red\"> Please check account you want to change !!!!</h3>\n");
+      out.write("                ");
 
-                }
-            }
-        
+                        }
+                    }
+                
       out.write("\n");
-      out.write("        <form action=\"update_user.jsp\" id=\"check\">\n");
-      out.write("            <div>\n");
-      out.write("                <!--Change role-->\n");
-      out.write("                <div >\n");
-      out.write("                    <select  name=\"role\">\n");
-      out.write("                        <option value=\"1\">Change Role to Administrator</option>\n");
-      out.write("                        <option value=\"2\">Change Role to Subscriber</option>\n");
-      out.write("                    </select>\n");
-      out.write("                    <button type=\"submit\">Change</button>\n");
-      out.write("                </div><br>\n");
+      out.write("                <form action=\"update_user.jsp\" id=\"check\">\n");
+      out.write("                    <div>\n");
+      out.write("                        <!--Change role-->\n");
+      out.write("                        <div>\n");
+      out.write("                            <select  name=\"role\">\n");
+      out.write("                                <option value=\"1\">Change Role to Administrator</option>\n");
+      out.write("                                <option value=\"2\">Change Role to Subscriber</option>\n");
+      out.write("                            </select>\n");
+      out.write("                            <button type=\"submit\">Change</button>\n");
+      out.write("                        </div><br>\n");
       out.write("\n");
       out.write("\n");
-      out.write("                <!--Change role end-->\n");
-      out.write("            </div>\n");
-      out.write("            <script>\n");
-      out.write("                function toggle(source) {\n");
-      out.write("                    var checkboxes = document.querySelectorAll('input[type=\"checkbox\"]');\n");
-      out.write("                    for (var i = 0; i < checkboxes.length; i++) {\n");
-      out.write("                        if (checkboxes[i] !== source)\n");
-      out.write("                            checkboxes[i].checked = source.checked;\n");
-      out.write("                    }\n");
-      out.write("                }</script>\n");
-      out.write("            <div>\n");
-      out.write("                <table>\n");
-      out.write("                    <thead>\n");
-      out.write("                        <tr>\n");
-      out.write("                            <th <input type=\"checkbox\" onclick=\"toggle(this)\"/>Username</th>\n");
-      out.write("                            <th>Name</th>\n");
-      out.write("                            <th>Email</th>\n");
-      out.write("                            <th>Role</th>\n");
-      out.write("                        </tr>\n");
-      out.write("                    </thead>\n");
-      out.write("                    <tbody>\n");
-      out.write("                        ");
+      out.write("                        <!--Change role end-->\n");
+      out.write("                    </div>\n");
+      out.write("                    <script>\n");
+      out.write("                        function toggle(source) {\n");
+      out.write("                            var checkboxes = document.querySelectorAll('input[type=\"checkbox\"]');\n");
+      out.write("                            for (var i = 0; i < checkboxes.length; i++) {\n");
+      out.write("                                if (checkboxes[i] !== source)\n");
+      out.write("                                    checkboxes[i].checked = source.checked;\n");
+      out.write("                            }\n");
+      out.write("                        }</script>\n");
+      out.write("                    <input id=\"check\" name=\"\" type=\"submit\" value=\"Submit\"> <table class=\"table table-condensed\">\n");
+      out.write("                        <thead>\n");
+      out.write("                            <tr>\n");
+      out.write("                                <th>No.</th>\n");
+      out.write("                                <th <input type=\"checkbox\" onclick=\"toggle(this)\"/>Username</th>\n");
+      out.write("                                <th>Name</th>\n");
+      out.write("                                <th>Email</th>\n");
+      out.write("                                <th>Role</th>\n");
+      out.write("                            </tr>\n");
+      out.write("                        </thead>\n");
+      out.write("                        <tbody>\n");
+      out.write("                            ");
 
-                            int i = 0;
-                            //show all users
-                            for (User user : list) {
-                                String Name = user.getFName() + " " + user.getLName();
-                                String Role_Show = "";
-                                if (user.getRoleId() == 1) {
-                                    Role_Show = "Administrator";
-                                } else if (user.getRoleId() == 2) {
-                                    Role_Show = "Subscriber";
-                                }
-                        
+                                int NumCount = 0;
+                                //show all users
+                                for (User user : list) {
+                                    NumCount++;
+                                    String Name = user.getFName() + " " + user.getLName();
+                                    String Role_Show = "";
+                                    if (user.getRoleId() == 1) {
+                                        Role_Show = "Administrator";
+                                    } else if (user.getRoleId() == 2) {
+                                        Role_Show = "Subscriber";
+                                    }
+                            
       out.write("\n");
-      out.write("                        <tr>\n");
-      out.write("                            <td><input type=\"checkbox\" name=\"User\" value=\"");
+      out.write("                            <tr>\n");
+      out.write("                                <td>");
+      out.print(NumCount);
+      out.write("</td>\n");
+      out.write("                                <td><input type=\"checkbox\" name=\"User\" value=\"");
       out.print(user.getUsername());
       out.write('"');
       out.write('>');
       out.print(user.getUsername());
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                                <td>");
       out.print(Name);
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                                <td>");
       out.print(user.getEmail());
       out.write("</td>\n");
-      out.write("                            <td>");
+      out.write("                                <td>");
       out.print(Role_Show);
       out.write("</td>\n");
-      out.write("                        </tr>\n");
-      out.write("                        ");
+      out.write("                            </tr>\n");
+      out.write("                            ");
 
-                            }
-                        
+                                }
+                            
       out.write("\n");
-      out.write("                    </tbody>\n");
-      out.write("                </table>\n");
+      out.write("                        </tbody>\n");
+      out.write("                    </table>\n");
+      out.write("                </form>\n");
       out.write("            </div>\n");
-      out.write("        </form>\n");
-      out.write("    </div>\n");
-      out.write("\n");
-      out.write("</div>\n");
-      out.write("</div>                   \n");
-      out.write("</body>\n");
+      out.write("        </div>            \n");
+      out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
