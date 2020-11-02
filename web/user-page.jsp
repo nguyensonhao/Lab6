@@ -1,5 +1,3 @@
-
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="Object.User"%>
 <%@page import="Model.UserModel"%>
@@ -30,22 +28,27 @@ table, th, td {
 </style>
 <html>
     <head>
-        <meta http-equiv="Contents-Type" content="text/html; charset=UTF-8">
-
-        <title>User Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <title>Manager Page</title>
     </head>
     <body>
-        <div class="page-header">
-            <h1 style="text-align: center">User Page</h1>
+        <div class="container">
+            <div>
+                            <h1 style="text-align: center">User Page</h1>
+            </div>
+            <div class="alert alert-success">
             Welcome <strong><%=Name_User%></strong>! <a href="Login.jsp" class="btn btn-info" role="button"> Logout </a><br/>                                
-
-            <div class="card"><h2><strong>Show all user</strong></h2>
+            </div>
+            <div class="well well-lg"><h2><strong>Show all user</strong></h2>
                 <form class="navbar-form" role="search"></form>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                 </div>
                 <form>
-                    <table>
-                        <thead >
+                    <table class="table table-condensed">
+                        <thead>
                             <tr>
                                 <th style="text-align: center">No.</th>
                                 <th>Username</th>

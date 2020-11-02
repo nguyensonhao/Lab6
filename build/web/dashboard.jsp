@@ -68,7 +68,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap-theme.css.map">
+        <link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap-theme.min.css.map">
+        <link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
